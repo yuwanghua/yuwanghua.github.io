@@ -1,276 +1,470 @@
  public class TestMath {
+<br>
 	public static void main(String[] args) {
+<br>
 		//取整相关操作
 		System.out.println(Math.ceil(3.2));//向上取整
+<br>
 		System.out.println(Math.floor(3.2));//向下取整
+<br>
 		System.out.println(Math.round(3.2));//四舍五入
+<br>
 		System.out.println(Math.round(3.8));
+<br>
 		//绝对值，开方，a的b次幂等操作
+<br>
 		System.out.println(Math.abs(-45));
+<br>
 		System.out.println(Math.sqrt(64));
+<br>
 		System.out.println(Math.pow(5,2));
+<br>
 		System.out.println(Math.pow(2,5));
+<br>
 		//Math中常用的常量
+<br>
 		System.out.println(Math.PI);
+<br>
 		System.out.println(Math.E);
+<br>
 		//随机数取到(0-1),可以在后面*100
+<br>
 		System.out.println(Math.random());
+<br>
 		//弧度和角度转化
+<br>
 		System.out.println(Math.toDegrees(Math.PI));//弧度转角度
+<br>
 		System.out.println(Math.toRadians(90));//角度转弧度
+<br>
 		double x = Math.PI/2;
+<br>
 		//e的-x次
+<br>
 		System.out.println(Math.exp(-x));
+<br>
 		System.out.println(Math.sin(x));//sin里面是需要弧度数据
+<br>
 		System.out.println(Math.cos(x));
+<br>
 		System.out.println(Math.tan(x/2));
+<br>
 		System.out.println(Math.asin(0.5)*180);
+<br>
 		
 		Scanner sc = new Scanner(System.in);
+<br>
 		System.out.println("输入自变量：");
+<br>
 		x = sc.nextInt();
+<br>
 		double y = 2*Math.pow(x, 2)+Math.pow(x, 1.0/3)+Math.sin(x)+Math.log(x)/Math.log(2);
+<br>
 		System.out.println(y);
+<br>
 		System.out.println(Math.pow(x, 1.0/3));//1.0很关键，在java中，整数相除是取证的
+<br>
 		System.out.println(Math.log(x)/Math.log(2));
+<br>
 		
 		for(int i=1;i<=120;i++) {
+<br>
 			if(i%3==0) {
+<br>
 				System.out.print(toLowerLetter());
+<br>
 			}
+<br>
 			else if(i%3==1) {
+<br>
 				System.out.print(toUpperLetter());
+<br>
 			}
+<br>
 			else {
+<br>
 				System.out.print(toNumber());
+<br>
 			}
+<br>
 			if(i%20==0) {
+<br>
 				System.out.println();
+<br>
 			}
+<br>
 		}
 	}
 
 	private static char toUpperLetter() {
+<br>
 		// TODO Auto-generated method stub
+<br>
 		return (char)(65+Math.random()*26);
+<br>
 	}
 
 	private static char toNumber() {
+<br>
 		// TODO Auto-generated method stub
+<br>
 		return (char)(48+Math.random()*9);
+<br>
 	}
 
 	private static char toLowerLetter() {
+<br>
 		// TODO Auto-generated method stub
+<br>
 		return (char)(97+Math.random()*26);
+<br>
 	}
 }
 import java.time.LocalDate;
+<br>
 
 public class TestLocalDate {
+<br>
 	public static void main(String[] args) {
+<br>
 		LocalDate p = LocalDate.now();
+<br>
 		LocalDate q = LocalDate.of(2019,3,1);
+<br>
 		System.out.println(p);
+<br>
 		System.out.println(q);
+<br>
 		System.out.println(q.getDayOfMonth());
+<br>
 		System.out.println(q.getDayOfYear());
+<br>
 		System.out.println("--------------------");
+<br>
 		System.out.println(q.getMonthValue());
+<br>
 		System.out.println(q.getMonth());
+<br>
 		System.out.println(q.getYear());
+<br>
 		System.out.println(p.getDayOfWeek());
+<br>
 		p = p.plusDays(4);
+<br>
 		p = p.minusDays(4);
+<br>
 		//puls,minus:加减对应的年，月，日,星期
+<br>
 		System.out.println(p.getDayOfWeek());
+<br>
 	}
 }
 				       public class TestFactory {
+<br>
 	public static void main(String[] args) {
+<br>
 		Electronis p = Factory.MakeProduct("Computer","huawei", 5500,"shengzheng");
+<br>
 		System.out.println(p.getBrand());
+<br>
 		System.out.println(p.getPrice());
+<br>
 		p = Factory.MakeProduct("Phone","oppo", 3500,"shanghai");
+<br>
 		System.out.println(p.getBrand());
+<br>
 		System.out.println(p.getPrice());
+<br>
 	}
 }
 
 
 class Factory{
+<br>
 	private static Electronis product;
+<br>
 	static public Electronis MakeProduct(String type,String brand,int price,String address) {
+<br>
 		if(type.contentEquals("Computer")) {
+<br>
 			product = new Computer(brand,price,address);
+<br>
 		}
 		if(type.contentEquals("Phone")) {
+<br>
 			product = new Phone(brand,price,address);
+<br>
 		}
 		return product;
+<br>
 	}
 }
 
 abstract class Electronis{
+<br>
 	String brand;
+<br>
 	int price;
+<br>
 	public abstract String getBrand();
+<br>
 	public abstract int getPrice();
+<br>
 }
 
 
 class Phone extends Electronis{
+<br>
 	String address;
+<br>
 	public Phone(String brand,int price,String address) {
+<br>
 		this.brand = brand;
+<br>
 		this.price = price;
+<br>
 		this.address = address;
+<br>
 	}
 	 
 	
 	public String getBrand() {
+<br>
 		return this.brand;
+<br>
 	}
 	public int getPrice() {
+<br>
 		return this.price;
+<br>
 	}
 }
 
 class Computer extends Electronis{
+<br>
 	String address;
+<br>
 	public Computer(String brand,int price,String address) {
+<br>
 		this.brand = brand;
+<br>
 		this.price = price;
+<br>
 		this.address = address;
+<br>
 	}
 	public String getBrand() {
+<br>
 		return this.brand;
+<br>
 	}
 	public int getPrice() {
+<br>
 		return this.price;
+<br>
 	}
 }
 import java.time.LocalDateTime;
+<br>
 
 public class TestLocalDateTime {
+<br>
 	public static void main(String[] args) {
+<br>
 		LocalDateTime time1 = LocalDateTime.now();
+<br>
 		LocalDateTime time2 = LocalDateTime.of(1994,6,12,15,11,30);
+<br>
 		System.out.println(time1.isBefore(time2));
+<br>
 		System.out.println(time1.plusMonths(6));
+<br>
 		System.out.println(time2.minusMonths(2));
+<br>
 		System.out.println(time1);
+<br>
 		
 		
 		
 	}
 }
 				       import java.time.LocalTime;
+<br>
 import java.time.temporal.ChronoUnit;
+<br>
 
 public class TestLocalTime {
+<br>
 	public static void main(String[] args) {
+<br>
 		LocalTime time1 = LocalTime.now();
+<br>
 		LocalTime time2 = LocalTime.of(22,30,22);//小时，分钟
+<br>
 		System.out.println(time1);
+<br>
 		System.out.println(time2);
+<br>
 		System.out.println(time1.isBefore(time2));
+<br>
 		time1 = time1.truncatedTo(ChronoUnit.SECONDS);//截断比秒小的时间,阶段为计时单位秒。说明截止到秒，之后就不显示
+<br>
 		System.out.println(time1);
+<br>
 		System.out.println(time2.getHour());
+<br>
 		System.out.println(time2.getMinute());
+<br>
 		System.out.println(time2.getSecond());
+<br>
 		
 	}
 }
 				       public class TestLocalDate3 {
+<br>
 	public static void main(String[] args) {
+<br>
 		LocalDate today = LocalDate.now();
+<br>
 		LocalDate birthday = LocalDate.of(1900,Month.JANUARY,1);
+<br>
 		Period p = Period.between(birthday,today);
+<br>
 		long p2 = ChronoUnit.DAYS.between(birthday,today);//计时单位天
+<br>
 	    out.println("You are " + p.getYears() +"years, "+p.getMonths()+"month, and "+p.getDays()+"days old.("+p2+"day total)");
+<br>
 	}
 }
 package 各种位置类;
+<br>
 /**
  * 测试非静态内部类
  * @author yuwanghua
  *
  */
 public class TestInnerClass2 {
+<br>
 	public static void main(String[] args) {
+<br>
 		Person p1 = new Person();
+<br>
 		System.out.println(p1.getName().getFirst());
+<br>
 		System.out.println(p1.getName().getLast());
+<br>
 		p1.setAge(23);
+<br>
 		System.out.println(p1.getAge());
+<br>
 	}
 }
 class Person{
+<br>
 	private int age;
+<br>
 	class Name{
+<br>
 		private String first;
+<br>
 		private String last;
+<br>
 		public Name(String first, String last) {
+<br>
 			super();
+<br>
 			this.first = first;
+<br>
 			this.last = last;
+<br>
 		}
 		public String getFirst() {
+<br>
 			return first;
+<br>
 		}
 		public void setFirst(String first) {
+<br>
 			this.first = first;
+<br>
 		}
 		public String getLast() {
+<br>
 			return last;
+<br>
 		}
 		public void setLast(String last) {
+<br>
 			this.last = last;
+<br>
 		}
 	}
 	public Name getName() {
+<br>
 		Name n1 = new Name("Liu","Fei");
+<br>
 		return n1;
+<br>
 	}
 	public int getAge() {
+<br>
 		return age;
+<br>
 	}
 	public void setAge(int age) {
+<br>
 		this.age = age;
+<br>
 	}
 	
 }
 				       package 各种位置类;
+<br>
 /**
  *	 测试静态内部类
  * @author yuwanghua
  *
  */
+<br>
 public class TestStaticInnerClass2 {
+<br>
 	 public static void main(String[] args) {
+<br>
 		Person4.Name p1 = new Person4.Name("zhang","fei");
+<br>
 		System.out.println(p1.getAge());
+<br>
 	}
 }
 
 class Person4{
+<br>
 	private static int age=25;
+<br>
 	public static class Name{
+<br>
 		private String last;
+<br>
 		private String first;
+<br>
 		Name(String last,String first){
+<br>
 			this.last = last;
+<br>
 			this.first = first;
+<br>
 		}
 		public int getAge() {
+<br>
 			age++;
+<br>
 			return age;
+<br>
 		}
 	}
 }
 				       package 各种位置类;
+<br>
 
 /**
  * 	测试匿名内部类
@@ -278,89 +472,144 @@ class Person4{
  * @author yuwanghua
  *
  */
+<br>
 public class TestAnonymousInnerClass2 {
+<br>
 	public static void main(String[] args) {
+<br>
 		Person2 s1 = new Person2()
+<br>
 		{
 			public void walk() {
+<br>
 				System.out.println("Student walk");
+<br>
 			}
 			public void run() {
+<br>
 				System.out.println("Student run");
+<br>
 			}
 		};
 		s1.walk();
+<br>
 		s1.run();
+<br>
 		s1 = new Person2() {
+<br>
 			public void walk() {
+<br>
 				System.out.println("Teacher walk");
+<br>
 			}
 			public void run() {
+<br>
 				System.out.println("Teacher run");
+<br>
 			}
 		};
+<br>
 		s1.walk();
+<br>
 		s1.run();
+<br>
 	}
 } 	 
-
+<br>
 class Person2{
+<br>
 	public void walk() {
+<br>
 		System.out.println("Person2 walk");
+<br>
 	}
 	public void run() {
+<br>
 		System.out.println("Person2 run");
+<br>
 	}
 }
 				       package 各种位置类;
+<br>
 /**
  * 	测试局部内部类
  * @author yuwanghua
  *
  */
-
+<br>
 public class TestJubuInnerClass {
+<br>
 	public static void main(String[] args) {
+<br>
 		Person1 p1 = new Person1();
+<br>
 		System.out.println(p1.getName());
+<br>
 		p1.setAge(23);
+<br>
 		System.out.println(p1.getAge());
+<br>
 	}
 }
 
 class Person1{
+<br>
 	private int age;
+<br>
 	public String getName(){
+<br>
 		class Name{
+<br>
 			private String first;
+<br>
 			private String last;
+<br>
 			public Name(String first, String last) {
+<br>
 				super();
+<br>
 				this.first = first;
+<br>
 				this.last = last;
+<br>
 			}
 			public String getFirst() {
+<br>
 				return first;
+<br>
 			}
 			public void setFirst(String first) {
+<br>
 				this.first = first;
+<br>
 			}
+<br>
 			public String getLast() {
+<br>
 				return last;
+<br>
 			}
 			public void setLast(String last) {
+<br>
 				this.last = last;
+<br>
 			}
 		}
 		Name n1 = new Name("Wang","fei");
-		return n1.getFirst()+n1.getLast();		 
+<br>
+		return n1.getFirst()+n1.getLast();
+<br>
 	}
 	
 	public int getAge() {
+<br>
 		return age;
+<br>
 	}
 	public void setAge(int age) {
+<br>
 		this.age = age;
+<br>
 	}
 }
 	 
